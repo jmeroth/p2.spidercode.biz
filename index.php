@@ -6,11 +6,11 @@
 	define('DOC_ROOT', empty($_SERVER['DOCUMENT_ROOT']) ? './' : realpath($_SERVER['DOCUMENT_ROOT']).'/../');
 	  
 	# App path, ex: /path/to/home/app.com/
-	# __FILE__ is a predef cnst, name of file php engine is currently reading
+	# __FILE__ is a predef cnst, name of file php engine is currently reading -jfm
 	define('APP_PATH', realpath(dirname(__FILE__)).'/');
 
-# Display $_SERVER array
-	print_r($_SERVER);
+# Display $_SERVER array -jfm
+	# print_r($_SERVER);
          
 # Environment
 	require_once DOC_ROOT.'environment.php'; 
