@@ -12,6 +12,7 @@ If you want a different default time format for this app, set it below
 	define('TIME_FORMAT', 'M j Y'); 
 
 */
+	define('TIME_FORMAT', 'Y-m-d'); 
 
 # What is the name of this app?
 	define('APP_NAME', 'LocalTunes');  
@@ -28,10 +29,10 @@ A email designated to receive messages from the server. Examples:
  	
  	Some might want this to be the same as the APP_EMAIL, others might want to create a designated gmail address for it
 */ 	
-	define('SYSTEM_EMAIL', 'webmaster@myapp.com'); 
+	define('SYSTEM_EMAIL', 'webmaster@spidercode.biz'); 
 
 # Default DB name for this app
-	define('DB_NAME', "myapp_com"); 
+	define('DB_NAME', "p2_spidercode_biz");
 
 # Timezone
 	define('TIMEZONE', 'America/New_York');
@@ -43,5 +44,5 @@ A email designated to receive messages from the server. Examples:
 	//define('SMTP_PASSWORD', '');
 
 # For extra security, you might want to set different salts than what the core uses
-	//define('PASSWORD_SALT', '');
-	//define('TOKEN_SALT', '');
+	define('PASSWORD_SALT', 'obeautifulforspaciousskies');
+	define('TOKEN_SALT', 'foramberwavesofgrain');

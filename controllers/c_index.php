@@ -7,6 +7,7 @@ class index_controller extends base_controller {
 	-------------------------------------------------------------------------------------------------*/
 	public function __construct() {
 		parent::__construct();
+		echo "index_controller construct called<br><br>";
 	} 
 		
 	/*-------------------------------------------------------------------------------------------------
@@ -15,7 +16,7 @@ class index_controller extends base_controller {
 	public function index() {
 
 		# Get and print the current timestamp
-    		echo Time::now();
+    		echo Time::now()." from index_controller index() method";
 		
 		# Any method that loads a view will commonly start with this
 		# First, set the content of the template with a view file
