@@ -32,7 +32,7 @@ A email designated to receive messages from the server. Examples:
 	define('SYSTEM_EMAIL', 'webmaster@spidercode.biz'); 
 
 # Default DB name for this app
-	define('DB_NAME', "p2_spidercode_biz");
+	define('DB_NAME', "spiderco_p2_spidercode_biz");
 
 # Timezone
 	define('TIMEZONE', 'America/New_York');

@@ -1,0 +1,59 @@
+htdocs
+	core/
+		bootstrap.php
+		libraries/
+			DB.php
+				instance(DB_NAME)
+				insert('users', $_POST)
+				select_field($q)
+				select_rows($q)
+				select_array($q, 'user_id_followed')
+				update("users", $data, "WHERE token = '".$this->user->token."'")
+				delete('users_users', $where_condition)
+			Router.php
+				redirect("/users/login/")
+			File.php
+			View.php
+				instance('v_posts_users')
+	environment.php
+	p2.spidercode.biz/
+		.htaccess
+		config/
+			config.php
+			feature_flags.php
+		controllers/
+			c_base.php
+			c_index.php
+			c_users.php
+				index()
+				signup()  --  v_users_signup
+				p_signup()
+				login()  --  v_users_login
+				p_login()  --  redirect("/users/login/error") OR ("/")
+				logout()  --  redirect("/")
+				profile()  --  v_users_profile  --  redirect('/users/login')
+			c_posts.php
+				add()  --  v_posts_add
+				p_add()
+				index()  --  v_posts_index
+				users()  --  v_posts_users
+				follow($user_id_followed)  --  redirect("/posts/users")
+				unfollow($user_id_followed)  --  redirect("/posts/users")
+		css/
+		js/
+		libraries/
+
+		index.php
+		views/
+			_v_template.php
+			_v_email.php
+			v_users_profile.php
+			v_users_signup.php
+			v_users_login.php
+			v_index_index.php
+			v_posts_add.php
+			v_posts_index.php
+			v_posts_users.php
+	shared/
+		vendors/
+
