@@ -102,16 +102,6 @@ class posts_controller extends base_controller {
 
 	public function follow($user_id_followed) {
 
-		# Debug *********************************************-jfm
-		echo '<pre>';
-		print_r($this->user);
-		echo '</pre>';
-
-		echo '<pre>';
-		print_r($_COOKIE);
-		echo '</pre>';
-		# *******************************************************
-
 	    # Prepare the data array to be inserted
 	    $data = Array(
 	        "created" => Time::now(),
