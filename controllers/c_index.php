@@ -7,7 +7,7 @@ class index_controller extends base_controller {
 	-------------------------------------------------------------------------------------------------*/
 	public function __construct() {
 		parent::__construct();
-		echo "index_controller construct called<br><br>";
+		#echo "index_controller construct called<br><br>";
 	} 
 		
 	/*-------------------------------------------------------------------------------------------------
@@ -16,14 +16,14 @@ class index_controller extends base_controller {
 	public function index() {
 
 		# Get and print the current timestamp
-    		echo Time::display(Time::now())." from index_controller index() method";
+    		echo 'Today is: '.Time::display(Time::now()).' ---from index_controller, index() method.';
 		
 		# Any method that loads a view will commonly start with this
 		# First, set the content of the template with a view file
 			$this->template->content = View::instance('v_index_index');
 			
 		# Now set the <title> tag
-			$this->template->title = "Hello Time";
+			$this->template->title = "Music";
 	
 		# CSS/JS includes
 			/*

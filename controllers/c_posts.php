@@ -3,7 +3,7 @@ class posts_controller extends base_controller {
 
     public function __construct() {
         parent::__construct();
-		echo "posts_controller construct called<br><br>";
+		#echo "posts_controller construct called<br><br>";
         # Make sure user is logged in if they want to use anything in this controller
         if(!$this->user) {
             die("Members only. <a href='/users/login'>Login</a>");
@@ -41,7 +41,7 @@ class posts_controller extends base_controller {
 
 	public function index() {
 
-		echo "c_posts index method called<br><br>";
+		#echo "c_posts index method called<br><br>";
 
 	    # Set up the View
 	    $this->template->content = View::instance('v_posts_index');
@@ -65,6 +65,7 @@ class posts_controller extends base_controller {
 	    # Run the query
 	    $posts = DB::instance(DB_NAME)->select_rows($q);
 
+
 	    # Pass data to the View
 	    $this->template->content->posts = $posts;
 
@@ -75,7 +76,7 @@ class posts_controller extends base_controller {
 
 	public function users() {
 
-		echo "posts_users method called<br><br>";
+		#echo "posts_users method called<br><br>";
 
 	    # Set up the View
 	    $this->template->content = View::instance('v_posts_users');

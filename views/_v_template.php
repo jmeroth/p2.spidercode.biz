@@ -5,9 +5,10 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-	<!-- Common CSS/JSS
+	<!-- Common CSS/JSS -->
     <link rel="stylesheet" href="/css/app.css" type="text/css">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- Common JSS 
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	-->
 					
 	<!-- Controller Specific JS/CSS -->
@@ -25,6 +26,9 @@
 
             <a href='/users/logout'>Logout</a>
             <a href='/users/profile'>Profile</a>
+			<a href='/posts/add'>Add Post</a>
+			<a href='/posts/'>View Posts</a>
+			<a href='/posts/users'>Modify Follow List</a>
 
         <!-- Menu options for users who are not logged in -->
         <?php else: ?>

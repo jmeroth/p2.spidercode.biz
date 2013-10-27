@@ -12,7 +12,7 @@ class base_controller {
 	-------------------------------------------------------------------------------------------------*/
 	public function __construct() {
 
-		echo "base_controller construct called<br><br>";
+		#echo "base_controller construct called<br><br>";
 						
 		# Instantiate User obj
 			$this->userObj = new User();

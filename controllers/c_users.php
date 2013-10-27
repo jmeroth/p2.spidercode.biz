@@ -3,7 +3,7 @@ class users_controller extends base_controller {
 
     public function __construct() {
         parent::__construct();
-        echo "users_controller construct called<br><br>";
+        #echo "users_controller construct called<br><br>";
     } 
 
     public function index() {
@@ -82,9 +82,10 @@ class users_controller extends base_controller {
 	    # If we didn't find a matching token in the database, it means login failed
 	    if(!$token) {
 			if (!$email) {
+				# Send back to login "Email Wrong"
 				Router::redirect("/users/login/email_error");
 			} else {
-	        	# Send them back to the login page
+	        	# Send back to login "Password Wrong"
 	        	Router::redirect("/users/login/password_error");
 			}
 # ********************************************************************
