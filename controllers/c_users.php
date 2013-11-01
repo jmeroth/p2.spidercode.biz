@@ -163,7 +163,7 @@ class users_controller extends base_controller {
     	$this->template->content->user_name = $user_name;
 
     	# Pass information to the view instance
-    	$this->user_name = $user_name;
+    	$this->user_name = $user_name; // creating a new property: $this->user_name
 
     	# Render View
     	echo $this->template;

@@ -5,13 +5,13 @@
 			<td><b>First Name: </b><em><?=$user->first_name?></em></td>
 		</tr>
 		<tr>
-			<td><b>Last Name: </b><?=$user->last_name?></td>
+			<td><b>Last Name: </b><em><?=$user->last_name?></em></td>
 		</tr>
 		<tr>
-			<td><b>Email: </b><?=$user->email?></td>
+			<td><b>Email: </b><em><?=$user->email?></em></td>
 		</tr>
 		<tr>
-			<td><b>Timezone: </b><?=$user->timezone?></td>
+			<td><b>Timezone: </b><em><?=$user->timezone?></em></td>
 		</tr>
 </table>
 

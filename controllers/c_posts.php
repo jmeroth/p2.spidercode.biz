@@ -21,6 +21,17 @@ class posts_controller extends base_controller {
 
     }
 
+    public function edit() {
+
+        # Setup view
+        $this->template->content = View::instance('v_posts_edit');
+        $this->template->title   = "Edit Post";
+
+        # Render template
+        echo $this->template;
+
+    }
+
     public function p_add() {
 
         # Associate this post with this user
@@ -34,10 +45,17 @@ class posts_controller extends base_controller {
         # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
         DB::instance(DB_NAME)->insert('posts', $_POST);
 
+		echo "<br/>***<br/>";
+		# current post
+        print_r($_POST);
+		echo "<br/>***<br/>";
+
         # Quick and dirty feedback
         echo "Your post has been added. <a href='/posts/add'>Add another</a>";
 
     }
+
+    
 
 	public function index() {
 
@@ -49,8 +67,11 @@ class posts_controller extends base_controller {
 
 	    # Build the query
 	    $q = 'SELECT 
+				posts.post_id,
+
 	            posts.content,
 	            posts.created,
+				posts.modified,
 	            posts.user_id AS post_user_id,
 	            users_users.user_id AS follower_id,
 	            users.first_name,
@@ -65,7 +86,6 @@ class posts_controller extends base_controller {
 	    # Run the query
 	    $posts = DB::instance(DB_NAME)->select_rows($q);
 
-
 	    # Pass data to the View
 	    $this->template->content->posts = $posts;
 
@@ -74,9 +94,19 @@ class posts_controller extends base_controller {
 
 	}
 
-	public function users() {
 
-		#echo "posts_users method called<br><br>";
+	public function p_index($post_id) {
+
+		# Unix timestamp of when this post was created / modified
+		$_POST['modified'] = Time::now();
+
+		# Modify post
+		DB::instance(DB_NAME)->update('posts', $_POST, "WHERE post_id ='".$post_id."'");
+		# Quick and dirty feedback
+        echo "Your post has been modified. <a href='/posts'>return to posts</a>";
+    }
+
+	public function users() {
 
 	    # Set up the View
 	    $this->template->content = View::instance('v_posts_users');
