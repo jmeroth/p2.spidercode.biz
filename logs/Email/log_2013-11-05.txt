@@ -1,0 +1,8 @@
+2013-11-05 20:24:54 - INFO --> -------------------------- 
+2013-11-05 20:24:54 - INFO --> Controller/Method: users/p_signup 
+2013-11-05 20:24:54 - INFO --> From: LocalTunes (webmaster@spidercode.biz) 
+2013-11-05 20:24:54 - INFO --> To: John (john.meroth@state.ma.us),  
+2013-11-05 20:24:54 - INFO --> CC:  
+2013-11-05 20:24:54 - INFO --> BCC:  
+2013-11-05 20:24:54 - INFO --> Subject: Welcome to LocalTunes 
+2013-11-05 20:24:54 - INFO --> Body: This is just a message to confirm your registration at p2.spidercode.biz 
