@@ -37,10 +37,34 @@ class users_controller extends base_controller {
 		# Insert this user into the database
     	$user_id = DB::instance(DB_NAME)->insert('users', $_POST);
 
-    	# For now, just confirm they've signed up - 
+		# Send an email to the user's email address.
+			# Build a multi-dimension array of recipients of this email
+		$to[] = Array("name" => $_POST['first_name'], "email" => $_POST['email']);
+
+			# Build a single-dimension array of who this email is coming from
+			# note it's using the constants we set in the configuration above)
+		$from = Array("name" => APP_NAME, "email" => APP_EMAIL);
+
+			# Subject
+		$subject = "Welcome to LocalTunes";
+
+			# You can set the body as just a string of text
+		$body = "This is just a message to confirm your registration at p2.spidercode.biz";
+
+			# if email is complex and involves HTML/CSS, you can build the body via a View like we do in our controllers
+			# $body = View::instance('e_users_welcome');
+
+			# Build multi-dimension arrays of name / email pairs for cc / bcc if you want to 
+		$cc  = "";
+		$bcc = "";
+
+			# With everything set, send the email
+		$email = Email::send($to, $from, $subject, $body, true, $cc, $bcc);
+
+    	# Confirm they've signed up - 
     	# You should eventually make a proper View for this
-    	echo 'You\'re signed up';
-        
+    	#echo 'You\'re signed up';
+        Router::redirect("/users/login");
     }
 
     public function login($error = null) {

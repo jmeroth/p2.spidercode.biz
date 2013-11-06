@@ -16,6 +16,13 @@
     <input type='password' name='password'>
     <br><br>
 
+    Time Zone<br>
+	<select type = text name="timezone">
+	  <option value="America/Los_Angeles">America/Los_Angeles</option>
+	  <option value="Europe/Berlin">Europe/Berlin</option>
+	  <option value="Europe/Simferopool">Europe/Simferopool</option>
+	</select>
+
     <input type='submit' value='Sign up'>
 
 </form>
