@@ -1,8 +1,11 @@
 body {
-	background-color: #FFFF33;
+	background-color: #DDA0DD;
 }
 
 
 td {
-	background-color: #66CCFF;
+	background-color: #FFDEAD;
+}
+div {
+	background-color: #FFDEAD;
 }

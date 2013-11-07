@@ -41,7 +41,9 @@
     </div>
 
     <br>
-
+	<div id='banner' width='1000px'>
+		<img src='/uploads/avatars/treble-clef.jpg' alt='treble clef'>
+	</div>
 	<?php if(isset($content)) echo $content; ?>
 
 	<?php if(isset($client_files_body)) echo $client_files_body; ?>
