@@ -41,8 +41,10 @@
     </div>
 
     <br>
-	<div id='banner' width='1000px'>
+	<div id='banner'>
 		<img src='/uploads/avatars/treble-clef.jpg' alt='treble clef'>
+		LocalTunes -
+		Review you favorite nightspot!
 	</div>
 	<?php if(isset($content)) echo $content; ?>
 

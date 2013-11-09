@@ -68,7 +68,7 @@ class posts_controller extends base_controller {
 	    # Build the query
 	    $q = 'SELECT 
 				posts.post_id,
-
+				posts.location,
 	            posts.content,
 	            posts.created,
 				posts.modified,
