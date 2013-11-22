@@ -28,7 +28,8 @@
             <a href='/users/profile'>Profile</a>
 			<a href='/posts/add'>Add Post</a>
 			<a href='/posts/'>View/Edit Posts</a>
-			<a href='/posts/users'>Follow List</a>
+			<a href='/posts/users'>Follow Users</a>
+			<a href='/posts/venues'>Follow Venues</a>
 
         <!-- Menu options for users who are not logged in -->
         <?php else: ?>
@@ -44,7 +45,7 @@
 	<div id='banner'>
 		<img src='/uploads/avatars/treble-clef.jpg' alt='treble clef'>
 		LocalTunes -
-		Review you favorite nightspot!
+		Review you're favorite nightspot!
 	</div>
 	<?php if(isset($content)) echo $content; ?>
 

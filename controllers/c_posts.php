@@ -68,7 +68,7 @@ class posts_controller extends base_controller {
 	    # Build the query
 	    $q = 'SELECT 
 				posts.post_id,
-				posts.location,
+				posts.venue,
 	            posts.content,
 	            posts.created,
 				posts.modified,
@@ -81,7 +81,8 @@ class posts_controller extends base_controller {
 	            ON posts.user_id = users_users.user_id_followed
 	        INNER JOIN users 
 	            ON posts.user_id = users.user_id
-	        WHERE users_users.user_id = '.$this->user->user_id;
+	        WHERE users_users.user_id = '.$this->user->user_id.
+			' ORDER BY posts.user_id';
 
 	    # Run the query
 	    $posts = DB::instance(DB_NAME)->select_rows($q);
@@ -140,6 +141,41 @@ class posts_controller extends base_controller {
 	    echo $this->template;
 	}
 
+	public function venues() {
+
+	    # Set up the View
+	    $this->template->content = View::instance('v_posts_venues');
+	    $this->template->title   = "Venues";
+
+	    # Build the query to get all the Venues
+	    $q = "SELECT venue
+
+	        FROM posts GROUP BY venue";
+
+	    # Execute the query to get all the venues. 
+	    # Store the result array in the variable $venues
+	    $venues = DB::instance(DB_NAME)->select_rows($q);
+
+	    # Build the query to figure out what connections does this user already have? 
+	    # I.e. who are they following
+	    $q = "SELECT * 
+	        FROM users_venues
+	        WHERE user_id = ".$this->user->user_id;
+
+	    # Execute this query with the select_array method
+	    # select_array will return our results in an array and use the "venue_id_followed" field as the index.
+	    # This will come in handy when we get to the view
+	    # Store our results (an array) in the variable $connections
+	    $connections = DB::instance(DB_NAME)->select_array($q, 'venue_id_followed');
+
+	    # Pass data (users and connections) to the view
+	    $this->template->content->users       = $venues;
+	    $this->template->content->connections = $connections;
+
+	    # Render the view
+	    echo $this->template;
+	}
+
 	public function follow($user_id_followed) {
 
 	    # Prepare the data array to be inserted
@@ -156,6 +192,7 @@ class posts_controller extends base_controller {
 	    Router::redirect("/posts/users");
 
 	}
+
 
 	public function unfollow($user_id_followed) {
 
