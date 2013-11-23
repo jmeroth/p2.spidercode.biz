@@ -42,8 +42,8 @@ class posts_controller extends base_controller {
         $_POST['modified'] = Time::now();
 
         # Insert
-        # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
-        DB::instance(DB_NAME)->insert('posts', $_POST);
+        # Note didn't have to sanitize $_POST data because the insert method does it for us
+        DB::instance(DB_NAME)->insert('posts', $_POST);  //insert('table-name', array from forms post method)
 
 		echo "<br/>***<br/>";
 		# current post
@@ -77,11 +77,18 @@ class posts_controller extends base_controller {
 	            users.first_name,
 	            users.last_name
 	        FROM posts
+
 	        INNER JOIN users_users 
 	            ON posts.user_id = users_users.user_id_followed
+
+			INNER JOIN users_venues 
+	            ON posts.venue = users_venues.venue_followed
+
 	        INNER JOIN users 
 	            ON posts.user_id = users.user_id
+
 	        WHERE users_users.user_id = '.$this->user->user_id.
+				' AND users_venues.user_id = '.$this->user->user_id.
 			' ORDER BY posts.user_id';
 
 	    # Run the query
@@ -166,10 +173,10 @@ class posts_controller extends base_controller {
 	    # select_array will return our results in an array and use the "venue_id_followed" field as the index.
 	    # This will come in handy when we get to the view
 	    # Store our results (an array) in the variable $connections
-	    $connections = DB::instance(DB_NAME)->select_array($q, 'venue_id_followed');
+	    $connections = DB::instance(DB_NAME)->select_array($q, 'venue_followed');
 
-	    # Pass data (users and connections) to the view
-	    $this->template->content->users       = $venues;
+	    # Pass data (venues and connections) to the view
+	    $this->template->content->venues      = $venues;
 	    $this->template->content->connections = $connections;
 
 	    # Render the view
@@ -202,6 +209,35 @@ class posts_controller extends base_controller {
 
 	    # Send them back
 	    Router::redirect("/posts/users");
+
+	}
+
+	public function follow_venue($venue_followed) {
+
+	    # Prepare the data array to be inserted
+	    $data = Array(
+	        "created" => Time::now(),
+	        "user_id" => $this->user->user_id,
+	        "venue_followed" => $venue_followed
+	        );
+
+	    # Do the insert
+	    DB::instance(DB_NAME)->insert('users_venues', $data);
+
+	    # Send them back
+	    Router::redirect("/posts/venues");
+
+	}
+
+
+	public function unfollow_venue($venue_followed) {
+
+	    # Delete this connection
+	    $where_condition = 'WHERE user_id = '.$this->user->user_id.' AND venue_followed = '.$venue_followed;
+	    DB::instance(DB_NAME)->delete('users_venues', $where_condition);
+
+	    # Send them back
+	    Router::redirect("/posts/venues");
 
 	}
 }
