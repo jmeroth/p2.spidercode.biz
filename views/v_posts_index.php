@@ -3,7 +3,8 @@
 <article>
 <form method='POST' action='/posts/p_index/<?=$post['post_id']?>'>
 
-    <h1><?=$post['first_name']?> <?=$post['last_name']?> posted:</h1>
+    <h1><?=$post['venue']?></h1>
+	<p><?=$post['first_name']?> <?=$post['last_name']?> posted:</p>
 
 	<textarea name='content' id='content'><?=$post['content']?></textarea>
 
