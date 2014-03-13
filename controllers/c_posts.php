@@ -233,7 +233,7 @@ class posts_controller extends base_controller {
 	public function unfollow_venue($venue_followed) {
 
 	    # Delete this connection
-	    $where_condition = 'WHERE user_id = '.$this->user->user_id.' AND venue_followed = '.$venue_followed;
+	    $where_condition = 'WHERE user_id = '.$this->user->user_id." AND venue_followed = '".$venue_followed."'";
 	    DB::instance(DB_NAME)->delete('users_venues', $where_condition);
 
 	    # Send them back
